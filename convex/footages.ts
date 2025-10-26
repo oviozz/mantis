@@ -109,6 +109,27 @@ export const getWithAnalysis = query({
     },
 });
 
+export const getAnalysisById = query({
+    args: {id: v.id("footages")},
+    handler: async (ctx, args) => {
+        const footage = await ctx.db.get(args.id);
+
+        if (!footage) {
+            return null;
+        }
+
+        const analysis = await ctx.db
+            .query("footageAnalysis")
+            .withIndex("by_footage", (q) => q.eq("footageID", args.id))
+            .first();
+
+        return {
+            ...footage,
+            analysis,
+        };
+    },
+});
+
 export const generateUploadUrl = mutation({
     args: {},
     handler: async (ctx) => {

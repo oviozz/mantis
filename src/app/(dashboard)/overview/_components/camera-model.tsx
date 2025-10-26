@@ -21,7 +21,7 @@ interface Detection {
 interface ModelResult {
     ok: boolean;
     model: string;
-    detections: Detection[] | any;
+    detections: Detection[];
     count?: number;
     error?: string;
 }
@@ -428,14 +428,14 @@ export default function CameraModel() {
                         )}
 
                         {/* Detection summary grid */}
-                        <div className="absolute top-4 right-4 bg-black/85 text-white px-5 py-4 space-y-2 text-sm border border-gray-700">
+                        <div className="absolute top-4 right-4 bg-black/70 text-white px-5 py-4 space-y-2 text-sm border border-gray-700">
                             <div className="font-bold border-b border-gray-600 pb-2 text-base">Detections</div>
 
-                            {/* Face Detection */}
-                            <div className="flex items-center justify-between gap-5">
-                                <span className="text-blue-400">👤 Faces:</span>
-                                <span className="font-bold text-lg">{faceCount}</span>
-                            </div>
+                            {/*/!* Face Detection *!/*/}
+                            {/*<div className="flex items-center justify-between gap-6">*/}
+                            {/*    <span className="text-blue-400">👤 Faces:</span>*/}
+                            {/*    <span className="font-bold text-lg">{faceCount}</span>*/}
+                            {/*</div>*/}
 
                             {/* Weapon Detection */}
                             <div className="flex items-center justify-between gap-6">

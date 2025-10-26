@@ -3,7 +3,7 @@
 import React, {useMemo} from "react";
 import Link from "next/link";
 import {useQuery} from "convex/react";
-import {cn} from "@/lib/utils";
+import {cn, formatDateLabel, formatDuration} from "@/lib/utils";
 import {api} from "../../../../convex/_generated/api";
 import {Video, FolderOpen} from "lucide-react";
 
@@ -18,24 +18,6 @@ type FootageItem = {
     status: "COMPLETED" | "REVIEWING";
 };
 
-function formatDuration(seconds: number): string {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = Math.floor(seconds % 60);
-    if (h > 0) return `${h} hr ${m} min ${s} sec`;
-    if (m > 0) return `${m} min ${s} sec`;
-    return `${s} sec`;
-}
-
-function formatDateLabel(dateString: string): string {
-    const date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-    };
-    return date.toLocaleDateString(undefined, options);
-}
 
 function groupByTime(logs: FootageItem[]) {
     const now = new Date();

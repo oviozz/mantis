@@ -3,6 +3,8 @@ import {Camera, Video, Search, Target, Activity, Upload, ChevronRight} from 'luc
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useUploadStore} from "@/store/upload-store";
+import Image from "next/image";
+import logo from "@/../public/logo.png";
 
 export default function DashboardSidebar() {
     const pathname = usePathname();
@@ -56,14 +58,20 @@ export default function DashboardSidebar() {
             {/* Sidebar */}
             <div className="w-80 bg-white border-r border-gray-200 relative z-10 flex flex-col">
                 {/* Logo/Header */}
-                <div className="border-b border-gray-200 p-6">
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="bg-red-600 border border-red-600 p-2">
-                            <Camera className="w-6 h-6 text-white"/>
+                <div className="border-b border-gray-200 px-4 py-2">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2">
+                            <Image
+                                width={80}
+                                height={80}
+                                src={logo.src}
+                                alt="Security Logo"
+                                className="object-contain"
+                            />
                         </div>
                         <div>
-                            <h1 className="text-xl font-black text-gray-900">VISIONGUARD</h1>
-                            <p className="text-xs text-gray-500 font-mono">SECURITY SYSTEM</p>
+                            <h1 className="text-xl font-extrabold tracking-wider leading-5 text-green-900">MANTIS</h1>
+                            <p className="text-sm text-gray-500 font-medium">Detect Fast, Act Faster</p>
                         </div>
                     </div>
                 </div>
@@ -105,10 +113,10 @@ export default function DashboardSidebar() {
                 </nav>
 
                 {/* Quick Upload */}
-                <div className="border-t border-gray-200 p-4">
+                <div className="border-t border-gray-200 p-2">
                     <button
                         onClick={handleUploadClick}
-                        className="w-full bg-gray-50 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900 p-4 transition-all"
+                        className="w-full bg-gray-50 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 text-gray-900 p-2 transition-all"
                     >
                         <div className="flex items-center justify-center gap-2">
                             <Upload className="w-5 h-5"/>
